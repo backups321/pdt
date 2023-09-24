@@ -2,10 +2,48 @@
 
 Print out the directory structure of the input path in a tree format.
 
-## Usage - 1
+```text
+project_name
+    ├─ README.md                                             <- The top-level README for developers using this project.
+    ├─ data
+    │    ├─ label                                            <- label data
+    │    │    └─ label.json
+    │    ├─ processed                                        <- The final, canonical data sets for modeling.
+    │    │    ├─ 1.png
+    │    │    ├─ 2.png
+    │    │    ├─ 3.png
+    │    │    └─ ...
+    │    └─ raw                                              <- The original, immutable data dump.
+    │         ├─ 1.png
+    │         ├─ 2.png
+    │         ├─ 3.png
+    │         └─ ...
+    ├─ docs                                                  <- A default Sphinx project.
+    ├─ main.ipynb                                            <- jupyter notebook version of main.py
+    ├─ main.py                                               <- run this python file
+    ├─ models                                                <- Trained and serialized models, model predictions, or model summaries.
+    │    ├─ Autoencoder_4096.h5
+    │    └─ Classifier_4096.h5
+    ├─ reports                                               <- Generated analysis as HTML, PDF, LaTeX, etc.
+    │    └─ figures                                          <- Generated graphics and figures to be used in reporting.
+    ├─ requirements.txt                                      <- The requirements file for reproducing the analysis environment, e.g. generated with `pip freeze > requirements.txt`.
+    ├─ setup.py                                              <- makes project pip installable (pip install -e .) so src can be imported.
+    └─ src                                                   <- Source code for use in this project.
+         ├─ __init__.py                                      <- Makes src a Python module.
+         ├─ dataset                                          <- Scripts to download or generate dataset.
+         │    ├─ make_dataset.py
+         │    └─ train_valid_test_split.py
+         ├─ model                                            <- Scripts to train models and then use trained models to make predictions.
+         │    ├─ predict_classifier.py
+         │    └─ train_classifier.py
+         └─ visualization                                    <- Scripts to create exploratory and results oriented visualizations.
+              └─ visualization.py
+```
 
-```python
+## Usage - A
+
 Create a 'dictionary.json' file and provide descriptions for files/folders you want to annotate with arrows as follows:
+```text
 {
     "README.md":"The top-level README for developers using this project.",
     "files/folder name":"description",
@@ -13,17 +51,27 @@ Create a 'dictionary.json' file and provide descriptions for files/folders you w
     "files/folder name":"description",
 }
 ```
-
+RUN
 ```bash
-cd /directory/where/print_directory_tree.py/is/located
+$ cd /directory/where/print_directory_tree.py/is/located
 ```
 ```bash
-python print_directory_tree.py /The/path/of/the/project/whose/directory/structure/you/want/to/print --max_file_num 3 --arrow --tabs_num 8 --description_dict_file dictionary.json
+$ python print_directory_tree.py /The/path/of/the/project/whose/directory/structure/you/want/to/print --max_file_num 3 --arrow --tabs_num 8 --description_dict_file dictionary.json
 ```
+### Argument
+
+| Flag                                       | Description |
+|--------------------------------------------|-------------|
+| `--path`                                   | The path of the project whose directory structure you want to print |
+| `--max_file_num`                           | The maximum number of files to print within a single folder |
+| `--arrow`                                  | Specifies whether to include arrow symbols to indicate the hierarchy |
+| `--tabs_num`                               | The number of tabs used for indentation in the tree structure |
+| `--description_dict_file`                  | A dictionary containing descriptions for directory names |
 
 
-## Usage - 2
 
+## Usage - B
+RUN
 ```python
 # Import libraries
 import os
